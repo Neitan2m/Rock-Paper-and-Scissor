@@ -17,7 +17,7 @@ choiceBtns.forEach(button => button.addEventListener('click' , () => {
     computerChoice()
     playerText.textContent = `Player:  ${player}`;
     computerText.textContent = `Computer: ${computer}`;
-    resultText.textContent = playRound();
+    resultText.textContent = playRound(); l
 
 }))
 
