@@ -3,11 +3,14 @@ const playerText = document.querySelector("#playerText");
 const computerText = document.querySelector('#computerText');
 const resultText = document.querySelector('#resultText');
 const choiceBtns = document.querySelectorAll('.choiceBtn');
+const playerScoreText = document.querySelector('#playerScoreText')
+const computerScoreText= document.querySelector('#computerScoreText')
+const playAgain= document.querySelector('#restartBtn')
 let player;
 let computer;
 let result;
-let playerScore;
-let computerScore;
+let playerScore = 0
+let computerScore = 0
 
 //picking the player choice and making the game run\\
 
@@ -17,8 +20,9 @@ choiceBtns.forEach(button => button.addEventListener('click' , () => {
     computerChoice()
     playerText.textContent = `Player:  ${player}`;
     computerText.textContent = `Computer: ${computer}`;
-    resultText.textContent = playRound(); l
-
+    resultText.textContent = `Result: ${playRound()}`; 
+    playerScoreText.textContent = `Player Score: ${playerScore}`;
+    computerScoreText.textContent = `computer Score: ${computerScore}`;
 }))
 
 
@@ -43,21 +47,29 @@ function playRound (){
     if (player == computer) {
         return ('Tie');
     } 
-    else if 
-        (computer == "Rock") {
-        return (player == "Paper") ? "You win" : "You lose"
-    } 
-    else if  
-        (computer == "Paper") {
-        return (player == "Scissors") ? "You win" : "You lose"
-    }  
-    else if (computer == "Scissors") {
-        return (player == "Rock") ? "You win" : "You lose"
+    if  (
+        (computer == "Scissors" && player == "Rock") ||
+        (computer == "Paper" && player == "Scissors") ||
+        (computer == "Rock" && player == "Paper")) {
+            playerScore++ 
+            if (playerScore >= 5) {
+                return console.log("Congratulations, you win!")
+            }
+            return "Player Wins"
+    } else  {
+        computerScore++
+        if (computerScore >= 5) {
+            return console.log ("Computer wins")
+        }
+        return "Computer Wins"
         
+    }
+} 
 
-}
-}
-function gameOver () {
-    return playerScore === 5 || computerScore === 5
-}
 
+//button "play again" refresh page to start a new game 
+playAgain.addEventListener('click', refreshPage)
+
+function refreshPage () {
+    window.location.reload(true)
+}
