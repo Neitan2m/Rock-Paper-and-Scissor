@@ -8,30 +8,32 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
+    <header class="header">
     <h1 id="title"> Rock, Paper and Scissor</h1>
-    <div id ='introText'>
-        <p>Long time ago, in a distant galaxy, a war was happening between two gods... </p>
-        <p>Are you prepared to decide de destiny of a entire galaxy?</p>
-        <p>Select a side!</p>
-        <p>You have to win 5 times to end de battle and make your side win. Otherwise, if you lose...</p>
-    </div>
-    <h2>Let's start the battle!</h2>
-    </div>
-    <div id="gameDiv">
-        <h2 class="gameText" id="playerText">Player: </h2>
-        <h2 class="gameText" id="computerText">Computer: </h2>
-        <h2 class="gameText" id="resultText">Result: </h2>
+    </header>
 
+    <div class="gameText" id="resultText">Result: </div>
+    
+    <div id="choices">
+        <div class="score">
+        <div class="gameText" id="playerText">Player:</div>
+            <div class="gameText" id="playerScoreText">Player Score: </div>
+        </div>
+        <div class="score">
+        <div class="gameText" id="computerText">Computer:</div>
+            <div class="gameText" id="computerScoreText">Computer Score: </div>
+        </div>
+    </div>
+    <div id="Btns">
         <button class="choiceBtn">Rock</button>
         <button class="choiceBtn">Paper</button>
         <button class="choiceBtn">Scissors</button>
-
-        <h3 class="gameText" id="playerScoreText">Player Score: </h3>
-        <h3 class="gameText" id="computerScoreText">Computer Score: </h3>
-
-        <button id="restartBtn">Play again!</button>
-
     </div>
+    <div id="endgameText">
+        <p class="endingtext" id="endMessage"></p>
+        <button class="btn-restart" id="restartBtn">Play again!</button>
+    </div>
+    <div class="overlay" id="overlay"></div>
     <script src="index.js"></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-//connected html elements to make the page more interactive\\
+//connected html elements to make the game run\\
 const playerText = document.querySelector("#playerText");
 const computerText = document.querySelector('#computerText');
 const resultText = document.querySelector('#resultText');
@@ -18,12 +18,14 @@ choiceBtns.forEach(button => button.addEventListener('click' , () => {
 
     player = button.textContent;
     computerChoice()
+    openEndGame (playerScore, computerScore)
     playerText.textContent = `Player:  ${player}`;
     computerText.textContent = `Computer: ${computer}`;
     resultText.textContent = `Result: ${playRound()}`; 
     playerScoreText.textContent = `Player Score: ${playerScore}`;
-    computerScoreText.textContent = `computer Score: ${computerScore}`;
+    computerScoreText.textContent = `Computer Score: ${computerScore}`;
 }))
+
 
 
 function computerChoice () {
@@ -40,8 +42,6 @@ function computerChoice () {
             break
     } 
 }
-
-
 //the game logic
 function playRound (){
     if (player == computer) {
@@ -53,23 +53,57 @@ function playRound (){
         (computer == "Rock" && player == "Paper")) {
             playerScore++ 
             if (playerScore >= 5) {
-                return console.log("Congratulations, you win!")
+                return "Player won the battle"
+                
+                
             }
-            return "Player Wins"
+            if (playerScore <= 5) {
+                return `Player Wins, ${player} beat ${computer} `
+            }
     } else  {
         computerScore++
         if (computerScore >= 5) {
-            return console.log ("Computer wins")
+            return "Computer won the battle"
+            
         }
-        return "Computer Wins"
+        if (computerScore <= 5) {
+        return `Computer Wins, ${computer} beat ${player}`
+            }
         
     }
 } 
 
-
 //button "play again" refresh page to start a new game 
-playAgain.addEventListener('click', refreshPage)
+playAgain.addEventListener('click', restartGame)
 
-function refreshPage () {
-    window.location.reload(true)
+function restartGame () {
+    playerScore = 0
+    computerScore = 0
+}
+
+
+//adding some loop effect to stop the game 
+
+
+// adding more interactive items 
+
+const endGameText = document.getElementById("endgameText")
+const endMessage = document.getElementById ("endMessage")
+const restartBtn = document.getElementById("restartBtn")
+const overlay = document.getElementById("overlay")
+
+function openEndGame (playerScore, computerScore) {
+    if (playerScore >=5) {
+        endGameText.classList.add('active')
+        overlay.classList.add('active')
+    }
+    else if (computerScore >=5) {
+        endGameText.classList.add('active')
+        overlay.classList.add('active')
+    }
+}
+
+function closeEndGame () {
+    endGameText.classList.remove('active')
+    overlay.classList.remove('active')
 }

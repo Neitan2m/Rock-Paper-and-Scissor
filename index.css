@@ -1,6 +1,108 @@
 body {
+    text-align: center;
     background-color: black;
-    text-align:  center;
     color: white;
+    
+}
+
+#choices {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 400px;
+    padding: 10px;
+    margin: 0 auto;
+}
+
+.score {
+    width: 170px;
+}
+
+
+.gameText {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 22px;
+    font-weight: bold;
+    padding: 20px;
+}
+
+button {
+    margin: 1px blue;
+    color: gray;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    outline: none;
+    background-color: black;
+}
+
+button:hover {
+    margin: 1px blue;
+    color: black;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    outline: none;
+    background-color: white;
+    transition-duration: 1s;
+}
+
+
+#Btns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+#restartButton {
+    margin-top: 50px;
+}
+
+.endgameText {
+    position:fixed;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    padding: 30px;
+    border-radius: 10px;
+    background-color: gray;
+    text-align: center;
+    font-size: 30px;
+    user-select: none;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+}
+
+.endgameText.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.endingText {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.btn-restart {
+    padding: 10px 20px;
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.6;
+}
+
+.overlay.active {
+    display: block;
 }
 
