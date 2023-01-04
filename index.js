@@ -25,6 +25,52 @@ choiceBtns.forEach(button => button.addEventListener('click' , () => {
     computerScoreText.textContent = `Computer Score: ${computerScore}`;
 }))
 
+
+// functions to make the game run perfectly 
+function computerChoice () {
+    let choice = Math.floor(Math.random() * 3) + 1;
+    switch (choice) {
+        case 1:
+            computer = 'Rock' 
+            break
+        case 2:
+            computer = 'Paper' 
+            break
+        case 3:
+            computer = 'Scissors' 
+            break
+    } 
+}
+//the game logic
+function playRound (){
+    if (player == computer) {
+        return ("It's a tie!");
+    } 
+    if  (
+        (computer == "Scissors" && player == "Rock") ||
+        (computer == "Paper" && player == "Scissors") ||
+        (computer == "Rock" && player == "Paper")) {
+            playerScore++ 
+            if (playerScore >= 5) {
+                return endGame()
+                
+                
+            }
+            if (playerScore < 5) {
+                return `you won, Keep going! ${player} win ${computer} `
+            }
+    } else  {
+        computerScore++
+        if (computerScore >= 5) {
+            return endGame()
+            
+        }
+        if (computerScore < 5) {
+        return `You lost, but don't give up!, ${computer} win ${player}`
+            }
+        
+    }
+} 
 function endGame () {
     if (playerScore >= 5) {
         openEndGame (playerScore, computerScore)
@@ -34,51 +80,6 @@ function endGame () {
         return showEndMessage ()
     }
 }
-
-function computerChoice () {
-    let choice = Math.floor(Math.random() * 3) + 1;
-    switch (choice) {
-        case 1:
-            computer = 'Pedra' 
-            break
-        case 2:
-            computer = 'Papel' 
-            break
-        case 3:
-            computer = 'Tesoura' 
-            break
-    } 
-}
-//the game logic
-function playRound (){
-    if (player == computer) {
-        return ('Empate, boboca');
-    } 
-    if  (
-        (computer == "Tesoura" && player == "Pedra") ||
-        (computer == "Papel" && player == "Tesoura") ||
-        (computer == "Pedra" && player == "Papel")) {
-            playerScore++ 
-            if (playerScore >= 5) {
-                return endGame()
-                
-                
-            }
-            if (playerScore < 5) {
-                return `Você ganhou, ${player} detona ${computer} `
-            }
-    } else  {
-        computerScore++
-        if (computerScore >= 5) {
-            return endGame()
-            
-        }
-        if (computerScore < 5) {
-        return `Computador ganhou HEHEHE, ${computer} detona ${player}`
-            }
-        
-    }
-} 
 
 // adding more interactive items 
 
@@ -105,13 +106,13 @@ function closeEndGame () {
 
 function showEndMessage () {
     if (playerScore > computerScore) {
-     return(endMessage.textContent = "Mas tu é braba mesmo ein")
+     return(endMessage.textContent = "You are like a god!")
     } 
     else if (playerScore < computerScore) {
-      return (endMessage.textContent = "KKKKK PERDEU!")
+      return (endMessage.textContent = "Bro, you lost, but keep trying!")
     }
 }
-
+// just a restart button 
 restartBtn.addEventListener('click', restartGame)
 
 function restartGame () {
@@ -122,6 +123,6 @@ function restartGame () {
     computerScoreText.textContent = `Computer Score: ${computerScore}`;
     playerText.textContent = `Player: `;
     computerText.textContent = `Computer: `;
-    resultText.textContent = `Result: `; 
+    resultText.textContent = `So, you want another round? Let's go!`; 
 
 }

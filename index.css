@@ -1,7 +1,7 @@
 body {
     text-align: center;
-    background-color: rgb(63, 65, 172);
-    color: white;
+    background-color: rgb(97, 97, 223);
+    color: rgb(216, 215, 179);
     
 }
 
@@ -28,19 +28,17 @@ body {
 }
 
 button {
-    margin: 1px blue;
-    color: gray;
-    font-family: inherit;
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: inherit;
     cursor: pointer;
     outline: none;
-    background-color: black;
+    background-color: rgb(209, 123, 123);
 }
 
 button:hover {
-    margin: 1px blue;
     color: black;
-    font-family: inherit;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: inherit;
     cursor: pointer;
     outline: none;
@@ -106,3 +104,18 @@ button:hover {
     display: block;
 }
 
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 10px;
+    background-color: gray;
+    color: white;
+    font: 15px;
+
+}
