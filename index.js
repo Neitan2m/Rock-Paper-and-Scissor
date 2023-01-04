@@ -18,7 +18,6 @@ choiceBtns.forEach(button => button.addEventListener('click' , () => {
 
     player = button.textContent;
     computerChoice()
-    openEndGame (playerScore, computerScore)
     playerText.textContent = `Player:  ${player}`;
     computerText.textContent = `Computer: ${computer}`;
     resultText.textContent = `Result: ${playRound()}`; 
@@ -26,64 +25,60 @@ choiceBtns.forEach(button => button.addEventListener('click' , () => {
     computerScoreText.textContent = `Computer Score: ${computerScore}`;
 }))
 
-
+function endGame () {
+    if (playerScore >= 5) {
+        openEndGame (playerScore, computerScore)
+        return showEndMessage ()
+    } else if (computerScore >= 5) {
+        openEndGame (playerScore, computerScore)
+        return showEndMessage ()
+    }
+}
 
 function computerChoice () {
     let choice = Math.floor(Math.random() * 3) + 1;
     switch (choice) {
         case 1:
-            computer = 'Rock' 
+            computer = 'Pedra' 
             break
         case 2:
-            computer = 'Paper' 
+            computer = 'Papel' 
             break
         case 3:
-            computer = 'Scissors' 
+            computer = 'Tesoura' 
             break
     } 
 }
 //the game logic
 function playRound (){
     if (player == computer) {
-        return ('Tie');
+        return ('Empate, boboca');
     } 
     if  (
-        (computer == "Scissors" && player == "Rock") ||
-        (computer == "Paper" && player == "Scissors") ||
-        (computer == "Rock" && player == "Paper")) {
+        (computer == "Tesoura" && player == "Pedra") ||
+        (computer == "Papel" && player == "Tesoura") ||
+        (computer == "Pedra" && player == "Papel")) {
             playerScore++ 
             if (playerScore >= 5) {
-                return "Player won the battle"
+                return endGame()
                 
                 
             }
-            if (playerScore <= 5) {
-                return `Player Wins, ${player} beat ${computer} `
+            if (playerScore < 5) {
+                return `Você ganhou, ${player} detona ${computer} `
             }
     } else  {
         computerScore++
         if (computerScore >= 5) {
-            return "Computer won the battle"
+            return endGame()
             
         }
-        if (computerScore <= 5) {
-        return `Computer Wins, ${computer} beat ${player}`
+        if (computerScore < 5) {
+        return `Computador ganhou HEHEHE, ${computer} detona ${player}`
             }
         
     }
 } 
-
-//button "play again" refresh page to start a new game 
-playAgain.addEventListener('click', restartGame)
-
-function restartGame () {
-    playerScore = 0
-    computerScore = 0
-}
-
-
-//adding some loop effect to stop the game 
-
 
 // adding more interactive items 
 
@@ -93,11 +88,11 @@ const restartBtn = document.getElementById("restartBtn")
 const overlay = document.getElementById("overlay")
 
 function openEndGame (playerScore, computerScore) {
-    if (playerScore >=5) {
+    if (playerScore >= 5) {
         endGameText.classList.add('active')
         overlay.classList.add('active')
     }
-    else if (computerScore >=5) {
+    else if (computerScore >= 5) {
         endGameText.classList.add('active')
         overlay.classList.add('active')
     }
@@ -106,4 +101,27 @@ function openEndGame (playerScore, computerScore) {
 function closeEndGame () {
     endGameText.classList.remove('active')
     overlay.classList.remove('active')
+}
+
+function showEndMessage () {
+    if (playerScore > computerScore) {
+     return(endMessage.textContent = "Mas tu é braba mesmo ein")
+    } 
+    else if (playerScore < computerScore) {
+      return (endMessage.textContent = "KKKKK PERDEU!")
+    }
+}
+
+restartBtn.addEventListener('click', restartGame)
+
+function restartGame () {
+    closeEndGame ();
+    playerScore = 0
+    computerScore = 0
+    playerScoreText.textContent = `Player Score: ${playerScore}`;
+    computerScoreText.textContent = `Computer Score: ${computerScore}`;
+    playerText.textContent = `Player: `;
+    computerText.textContent = `Computer: `;
+    resultText.textContent = `Result: `; 
+
 }
